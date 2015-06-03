@@ -1,3 +1,6 @@
+//Code by Pixel, DroidTeam
+
+
 #include "LedControl.h"
 LedControl lc=LedControl(20, 5, 21, 1);
 
@@ -6,7 +9,7 @@ int y = 0;
 int jumpHeight = 4;
 
 void fall(){
-  for (y = jumpHeight-1; y >= 0; y--){
+  for ( y = jumpHeight-1 ; y >= 0; y-- ){
     lc.clearDisplay(0);
     lc.setLed(0, x, y, HIGH);
     lc.setLed(0, x+1, y, HIGH);
@@ -18,7 +21,7 @@ void fall(){
   }
 }
 void jump(){
-  for (y=1; y < jumpHeight; y++){
+  for ( y=1 ; y < jumpHeight; y++ ){
     lc.clearDisplay(0);
     lc.setLed(0, x, y, HIGH);
     lc.setLed(0, x+1, y, HIGH);

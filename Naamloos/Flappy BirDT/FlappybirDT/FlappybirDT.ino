@@ -4,6 +4,9 @@
 #include "LedControl.h"
 LedControl lc = LedControl(20, 5, 21, 1);
 bool jumping;
+bool atwall = false;
+bool atplayer = false;
+bool dead = false;
 
 void setup() {
   lc.shutdown(0, false);
@@ -22,10 +25,11 @@ void loop() {
     buttonState = buttonState;
     jumping = jump();
   }
-    if (!jumping) {
+  if (!jumping) {
     fall();
-    }
-
+  }
+  wall();
   jumping = false;
+  fixplayer;
 }
 

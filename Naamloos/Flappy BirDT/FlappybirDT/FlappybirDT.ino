@@ -1,8 +1,10 @@
-/*This game has been built around an early version of
- "JumpGame" by pixel :) */
+/*
+ This game has been built around an early version of
+ "JumpGame" by pixel :) 
+ a lot of stuff has been added here that hasn't been added there.. wow xD
+ */
 
 #include "LedControl.h"
-// scroller from FLAPPIJ BIRD. more code wont be used :3
 LedControl lc = LedControl(20, 5, 21, 1);
 int wallx = 7;
 bool jumping;

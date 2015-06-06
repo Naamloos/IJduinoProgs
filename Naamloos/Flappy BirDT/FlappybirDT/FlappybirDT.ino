@@ -106,7 +106,7 @@ bool isdead() {
       delay(1000);
       return true;
     }
-    if (cury >= 6) {
+    if (cury >= 5) {
       delay(1000);
       return true;
 
@@ -125,16 +125,30 @@ bool isdead() {
 void wall() {
   lc.setLed(0, wallx, 0, LOW);
   lc.setLed(0, wallx, 1, LOW);
+  lc.setLed(0, wallx, 5, LOW);
   lc.setLed(0, wallx, 6, LOW);
   lc.setLed(0, wallx, 7, LOW);
   if (wallx > 0) {
     wallx = wallx - 1;
   }
   if (wallx <= 0) {
+  lc.setLed(0, wallx, 0, HIGH);
+  lc.setLed(0, wallx, 1, HIGH);
+  lc.setLed(0, wallx, 5, HIGH);
+  lc.setLed(0, wallx, 6, HIGH);
+  lc.setLed(0, wallx, 7, HIGH);
+  delay(50);
     wallx = 7 ;
+  lc.setLed(0, 0, 0, LOW);
+  lc.setLed(0, 0, 1, LOW);
+  lc.setLed(0, 0, 5, LOW);
+  lc.setLed(0, 0, 6, LOW);
+  lc.setLed(0, 0, 7, LOW);
+
   }
   lc.setLed(0, wallx, 0, HIGH);
   lc.setLed(0, wallx, 1, HIGH);
+  lc.setLed(0, wallx, 5, HIGH);
   lc.setLed(0, wallx, 6, HIGH);
   lc.setLed(0, wallx, 7, HIGH);
 

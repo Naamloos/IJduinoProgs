@@ -103,12 +103,13 @@ int render(const byte* frame, long delaytime) {
 bool isdead() {
   if (wallx <= 1) {
     if (cury <= 1) {
+      delay(1000);
       return true;
-      delay(200);
     }
     if (cury >= 6) {
+      delay(1000);
       return true;
-      delay(200);
+
     }
     else {
       return false;

@@ -2,6 +2,7 @@
  "JumpGame" by pixel :) */
 
 #include "LedControl.h"
+// scroller from FLAPPIJ BIRD. more code wont be used :3
 LedControl lc = LedControl(20, 5, 21, 1);
 bool jumping;
 bool atwall = false;
@@ -25,6 +26,15 @@ const byte homemen2[8] PROGMEM = {B00100100,
                    B11111111,
                    B10000001
                   };
+                  
+              const byte ded[8] PROGMEM = {B01000010,
+B01000010,
+B01000010,
+B00000000,
+B00000000,
+B01111110,
+B10000001,
+B00000000};
 
 void setup() {
   lc.shutdown(0, false);
@@ -37,7 +47,9 @@ void setup() {
 int buttonState = HIGH;
 
 void loop() {
+  bool ended = isdead();
   int reader = digitalRead(9);
+  if(!ended){
   if (!dead) {
     if (reader != buttonState) {
       buttonState = buttonState;
@@ -68,6 +80,10 @@ void loop() {
       return;
     }
   }
+  }
+  if(ended){
+    render(ded,100000);
+  }
 }
 
 int render(const byte* frame, long delaytime) {
@@ -76,6 +92,31 @@ int render(const byte* frame, long delaytime) {
     lc.setColumn(0, 7 - r, pgm_read_byte(&frame[r]));
   }
   delay(delaytime);
+}
+
+bool firstroll = true;
+bool isdead() {
+  int ply = playery();
+  bool wallplayb = wallplay();
+  if (firstroll = false){
+  if (wallplayb = true) {
+    if (ply = 0) {
+      return true;
+    }
+    if (ply = 1) {
+      return true;
+    }
+    if (ply = 6) {
+      return true;
+    }
+    if (ply = 7) {
+      return true;
+    }
+    return false;
+  }
+  }
+  firstroll = false;
+    return false;
 }
 
 

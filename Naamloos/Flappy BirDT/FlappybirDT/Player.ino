@@ -32,3 +32,6 @@ void fixplayer() {
   lc.setLed(0, curx, cury, HIGH);
 }
 
+int playery(){
+  return cury;
+}

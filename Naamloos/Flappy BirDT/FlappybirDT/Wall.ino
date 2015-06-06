@@ -22,3 +22,9 @@ void wall() {
   delay(150);
 }
 
+bool wallplay(){
+  if(wallx = 1){
+    return true;
+  }
+  return false;
+}

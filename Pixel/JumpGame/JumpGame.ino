@@ -1,34 +1,33 @@
 //Code by Pixel, DroidTeam
 
-
 #include "LedControl.h"
 LedControl lc=LedControl(20, 5, 21, 1);
 
 int x = 1;
 int y = 0;
 int jumpHeight = 4;
+int addBlock = false;
+int gameStarted = false;
+
+void createChar(){
+  lc.clearDisplay(0);
+  lc.setLed(0, x, y, HIGH);
+  lc.setLed(0, x+1, y, HIGH);
+  lc.setLed(0, x, y+1, HIGH);
+  lc.setLed(0, x+1, y+1, HIGH);
+  lc.setLed(0, x+1, y+2, HIGH);
+  lc.setLed(0, x, y+2, HIGH);
+}
 
 void fall(){
   for ( y = jumpHeight-1 ; y >= 0; y-- ){
-    lc.clearDisplay(0);
-    lc.setLed(0, x, y, HIGH);
-    lc.setLed(0, x+1, y, HIGH);
-    lc.setLed(0, x, y+1, HIGH);
-    lc.setLed(0, x+1, y+1, HIGH);
-    lc.setLed(0, x+1, y+2, HIGH);
-    lc.setLed(0, x, y+2, HIGH);
+    createChar();
     delay(50);
   }
 }
 void jump(){
   for ( y=1 ; y < jumpHeight; y++ ){
-    lc.clearDisplay(0);
-    lc.setLed(0, x, y, HIGH);
-    lc.setLed(0, x+1, y, HIGH);
-    lc.setLed(0, x, y+1, HIGH);
-    lc.setLed(0, x+1, y+1, HIGH);
-    lc.setLed(0, x+1, y+2, HIGH);
-    lc.setLed(0, x, y+2, HIGH);
+    createChar();
     delay(50);
   }
   fall();
@@ -42,12 +41,7 @@ void setup() {
   digitalWrite(11, LOW);
   pinMode(9, INPUT_PULLUP);
   
-  lc.setLed(0, x, y, HIGH);
-  lc.setLed(0, x+1, y, HIGH);
-  lc.setLed(0, x, y+1, HIGH);
-  lc.setLed(0, x+1, y+1, HIGH);
-  lc.setLed(0, x+1, y+2, HIGH);
-  lc.setLed(0, x, y+2, HIGH);  
+  createChar();
 }
 
 int buttonState = HIGH;
@@ -56,10 +50,13 @@ void loop() {
   int reader = digitalRead(9);
   if (reader != buttonState){
     buttonState = buttonState;
-    jump();
-    //delay(1000);
+    if (gameStarted == true){
+      jump();
+    }
+    else{
+      gameStarted = true;
+      createBlock();
+    }
   }
+  //lc.setColumn
 }
-
-
-

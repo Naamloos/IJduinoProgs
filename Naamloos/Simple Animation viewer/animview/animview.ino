@@ -10,7 +10,7 @@ int INTENSITY = 5;
 // To generate frames, i recommend the LED matrix generator by IJhack :) http://ijhack.nl/en/page/led-matrix-generator/ //
 // Now put every frame in a BYTE variable.
 
-const byte frame1[] = {B01000010,
+const byte frame1[8] PROGMEM = {B01000010,
                                 B01000010,
                                 B01000010,
                                 B00000000,
@@ -20,7 +20,7 @@ const byte frame1[] = {B01000010,
                                 B00111100
                                };
 
-const byte frame2[] = {B01000000,
+const byte frame2[8] PROGMEM = {B01000000,
                                 B01000000,
                                 B01001110,
                                 B00000000,

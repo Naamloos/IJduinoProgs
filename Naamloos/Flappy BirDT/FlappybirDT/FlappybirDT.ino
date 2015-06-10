@@ -2,6 +2,9 @@
  This game has been built around an early version of
  "JumpGame" by pixel :) 
  a lot of stuff has been added here that hasn't been added there.. wow xD
+ my code: 98%
+ pixels code: 1%
+ ijhack's code: 1% xD
  */
 
 #include "LedControl.h"

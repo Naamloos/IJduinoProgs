@@ -18,7 +18,6 @@ int startx = 1;
 int starty = 5;
 int cury ;
 int curx;
-int score;
 
 bool firstroll = true;
 const byte homemen1[8] PROGMEM = {B00100100,
@@ -84,7 +83,6 @@ void loop() {
       buttonState = buttonState;
       spawn();
       dead = false;
-      score = 0;
       return;
     }
     render(homemen2, 150);
@@ -93,7 +91,6 @@ void loop() {
       buttonState = buttonState;
       spawn();
       dead = false;
-      score = 0;
       return;
     }
   }
@@ -120,7 +117,6 @@ bool isdead() {
 
     }
     else {
-      score = score + 1;
       return false;
     }
   }

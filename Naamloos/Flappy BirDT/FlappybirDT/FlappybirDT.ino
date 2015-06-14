@@ -56,6 +56,7 @@ void setup() {
   pinMode(11, OUTPUT);
   digitalWrite(11, LOW);
   pinMode(9, INPUT_PULLUP);
+  score = 0;
 }
 
 int buttonState = HIGH;

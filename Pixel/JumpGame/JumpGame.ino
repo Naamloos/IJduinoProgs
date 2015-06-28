@@ -58,5 +58,5 @@ void loop() {
       createBlock();
     }
   }
-  //lc.setColumn
+  //lc.setColumn(0, row, 0xff);
 }

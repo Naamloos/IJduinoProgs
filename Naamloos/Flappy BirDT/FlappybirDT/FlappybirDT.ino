@@ -5,8 +5,12 @@
  my code: 98%
  pixels code: 1%
  ijhack's code: 1% xD
+ 
+ thanks to psy0rz for creating flappijbird, giving me the idea :p
+ scroller code coming from psy0rz's flappijbird.
  */
-
+#include "LedControlMS.h" // I am including LedControlMS for the scroller.
+#include "scroller.h"
 #include "LedControl.h"
 LedControl lc = LedControl(20, 5, 21, 1);
 int wallx = 7;
@@ -14,6 +18,8 @@ bool jumping;
 bool atwall = false;
 bool atplayer = false;
 bool dead = true;
+bool eind = false;
+char msg[100];
 int startx = 1;
 int starty = 5;
 int cury ;
@@ -76,10 +82,9 @@ void loop() {
     fixplayer;
     dead = isdead();
   }
-  if (dead) {
+  if (dead && !eind) {
     cury = starty;
     wallx = 7;
-    render(homemen1, 150);
     if (reader != buttonState) {
       lc.clearDisplay(0);
       buttonState = buttonState;
@@ -88,7 +93,9 @@ void loop() {
       score = 0;
       return;
     }
-    render(homemen2, 150);
+    if (dead && eind) {
+      finished(score);
+    }
     if (reader != buttonState) {
       lc.clearDisplay(0);
       buttonState = buttonState;
@@ -198,4 +205,10 @@ void fixplayer() {
 int playery() {
   return cury;
 }
-
+void(* reboot) (void) = 0;
+void finished(int score)
+{
+  sprintf(msg,"    %d  ", score);
+  scrolltext(lc, msg, 50, 9);
+  reboot();
+}

@@ -1,54 +1,46 @@
 /*
  This game has been built around an early version of
- "JumpGame" by pixel :) 
+ "JumpGame" by pixel :)
  a lot of stuff has been added here that hasn't been added there.. wow xD
  my code: 98%
  pixels code: 1%
  ijhack's code: 1% xD
  */
 
+// Difficulties:
+// easy: 200
+// medium: 100
+// hard: 70
+// insane: 50
+int diff = 70;
+
+
+
 #include "LedControl.h"
 LedControl lc = LedControl(20, 5, 21, 1);
 int wallx = 7;
+bool boot = true;
 bool jumping;
 bool atwall = false;
 bool atplayer = false;
 bool dead = true;
 int startx = 1;
-int starty = 5;
+int starty = 4;
 int cury ;
 int curx;
 int score;
 
-bool firstroll = true;
-const byte homemen1[8] PROGMEM = {B00100100,
-                                  B00100100,
-                                  B00011000,
-                                  B00000000,
-                                  B00111100,
-                                  B01000010,
-                                  B11111111,
-                                  B10000001
-                                 };
-const byte homemen2[8] PROGMEM = {B00100100,
-                                  B00100100,
-                                  B00100100,
-                                  B00100100,
-                                  B00011000,
-                                  B01111110,
-                                  B11111111,
-                                  B10000001
-                                 };
+const byte homes[8] PROGMEM = {B00000010,
+                               B00000010,
+                               B00000010,
+                               B00000000,
+                               B01000000,
+                               B00000000,
+                               B00000010,
+                               B00000010
+                              };
 
-const byte ded[8] PROGMEM = {B01000010,
-                             B01000010,
-                             B01000010,
-                             B00000000,
-                             B00000000,
-                             B01111110,
-                             B10000001,
-                             B00000000
-                            };
+                    bool firstroll = true;
 
 void setup() {
   lc.shutdown(0, false);
@@ -62,6 +54,10 @@ void setup() {
 int buttonState = HIGH;
 
 void loop() {
+  if (boot) {
+    render(homes, 0);
+    boot = false;
+  }
   int reader = digitalRead(9);
   if (!dead) {
     if (reader != buttonState) {
@@ -79,16 +75,6 @@ void loop() {
   if (dead) {
     cury = starty;
     wallx = 7;
-    render(homemen1, 150);
-    if (reader != buttonState) {
-      lc.clearDisplay(0);
-      buttonState = buttonState;
-      spawn();
-      dead = false;
-      score = 0;
-      return;
-    }
-    render(homemen2, 150);
     if (reader != buttonState) {
       lc.clearDisplay(0);
       buttonState = buttonState;
@@ -112,11 +98,11 @@ int render(const byte* frame, long delaytime) {
 bool isdead() {
   if (wallx <= 1) {
     if (cury <= 1) {
-      delay(1000);
+      delay(400);
       return true;
     }
     if (cury >= 5) {
-      delay(1000);
+      delay(400);
       return true;
 
     }
@@ -142,18 +128,18 @@ void wall() {
     wallx = wallx - 1;
   }
   if (wallx <= 0) {
-  lc.setLed(0, wallx, 0, HIGH);
-  lc.setLed(0, wallx, 1, HIGH);
-  lc.setLed(0, wallx, 5, HIGH);
-  lc.setLed(0, wallx, 6, HIGH);
-  lc.setLed(0, wallx, 7, HIGH);
-  delay(50);
+    lc.setLed(0, wallx, 0, HIGH);
+    lc.setLed(0, wallx, 1, HIGH);
+    lc.setLed(0, wallx, 5, HIGH);
+    lc.setLed(0, wallx, 6, HIGH);
+    lc.setLed(0, wallx, 7, HIGH);
+    delay(25);
     wallx = 7 ;
-  lc.setLed(0, 0, 0, LOW);
-  lc.setLed(0, 0, 1, LOW);
-  lc.setLed(0, 0, 5, LOW);
-  lc.setLed(0, 0, 6, LOW);
-  lc.setLed(0, 0, 7, LOW);
+    lc.setLed(0, 0, 0, LOW);
+    lc.setLed(0, 0, 1, LOW);
+    lc.setLed(0, 0, 5, LOW);
+    lc.setLed(0, 0, 6, LOW);
+    lc.setLed(0, 0, 7, LOW);
 
   }
   lc.setLed(0, wallx, 0, HIGH);
@@ -162,7 +148,7 @@ void wall() {
   lc.setLed(0, wallx, 6, HIGH);
   lc.setLed(0, wallx, 7, HIGH);
 
-  delay(100);
+  delay(diff);
 }
 
 bool jump() {
@@ -170,7 +156,6 @@ bool jump() {
     lc.setLed(0, curx, cury, LOW);
     cury = cury + 1;
     lc.setLed(0, curx, cury, HIGH);
-    //delay(60);
   }
   return true;
 }
@@ -180,7 +165,6 @@ void fall() {
     lc.setLed(0, curx, cury, LOW);
     cury = cury - 1;
     lc.setLed(0, curx, cury, HIGH);
-    //delay(80);
   }
 }
 
@@ -198,4 +182,6 @@ void fixplayer() {
 int playery() {
   return cury;
 }
+
+
 

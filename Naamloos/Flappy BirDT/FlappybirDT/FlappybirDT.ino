@@ -7,15 +7,6 @@
  ijhack's code: 1% xD
  */
 
-// Difficulties:
-// easy: 200
-// medium: 100
-// hard: 70
-// insane: 50
-int diff = 70;
-
-
-
 #include "LedControl.h"
 LedControl lc = LedControl(20, 5, 21, 1);
 int wallx = 7;
@@ -29,6 +20,7 @@ int starty = 4;
 int cury ;
 int curx;
 int score;
+int diff = 250;
 
 const byte homes[8] PROGMEM = {B00000010,
                                B00000010,
@@ -40,7 +32,7 @@ const byte homes[8] PROGMEM = {B00000010,
                                B00000010
                               };
 
-                    bool firstroll = true;
+bool firstroll = true;
 
 void setup() {
   lc.shutdown(0, false);
@@ -84,6 +76,7 @@ void loop() {
       return;
     }
   }
+  difficulty();
 }
 
 
@@ -183,5 +176,18 @@ int playery() {
   return cury;
 }
 
-
+void difficulty(){
+  if (score == 0) {
+    diff = 150;
+  }
+  if (score == 5) {
+    diff = 100;
+  }
+  if (score == 10) {
+    diff = 70;
+  }
+  if (score == 15) {
+    diff = 50;
+  }
+}
 

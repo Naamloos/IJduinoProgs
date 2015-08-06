@@ -22,7 +22,7 @@ int curx;
 int score;
 int diff = 250;
 
-const byte homes[8] PROGMEM = {B00000010,
+byte homes[8] = {B00000010,
                                B00000010,
                                B00000010,
                                B00000000,
@@ -47,7 +47,7 @@ int buttonState = HIGH;
 
 void loop() {
   if (boot) {
-    render(homes, 0);
+    render(homes);
     boot = false;
   }
   int reader = digitalRead(9);
@@ -79,14 +79,14 @@ void loop() {
   difficulty();
 }
 
-
+/*
 int render(const byte* frame, long delaytime) {
   lc.clearDisplay(0);
   for (int r = 0; r < 8; r++) {
     lc.setColumn(0, 7 - r, pgm_read_byte(&frame[r]));
   }
   delay(delaytime);
-}
+}*/
 
 bool isdead() {
   if (wallx <= 1) {

@@ -189,5 +189,20 @@ void difficulty(){
   if (score == 15) {
     diff = 50;
   }
+    if (score == 20) {
+    diff = 45;
+  }
+      if (score == 25) {
+    diff = 40;
+  }
+      if (score == 30) {
+    diff = 35;
+  }
+      if (score == 35) {
+    diff = 30;
+  }
+      if (score == 40) {
+    diff = 25;
+  }
 }
 

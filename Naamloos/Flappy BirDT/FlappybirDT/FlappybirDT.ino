@@ -106,6 +106,9 @@ bool isdead() {
       return false;
     }
   }
+  if (cury < 0){
+return true;
+  }
   return false;
 }
 
@@ -156,7 +159,7 @@ bool jump() {
 }
 
 void fall() {
-  if (cury > 0 ) {
+  if (cury > 0 - 1 ) {
     lc.setLed(0, curx, cury, LOW);
     cury = cury - 1;
     lc.setLed(0, curx, cury, HIGH);

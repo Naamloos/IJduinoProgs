@@ -5,6 +5,8 @@
  my code: 98%
  pixels code: 1%
  ijhack's code: 1% xD
+
+ So... sorry for putting this text here. just testing if git works..
  */
 
 #include "LedControl.h"

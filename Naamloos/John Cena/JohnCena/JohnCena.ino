@@ -66,6 +66,15 @@ B10000001,
 B10000001,
 B10000001};
 
+byte CENA[8] = {B01111110,
+B11000001,
+B10111101,
+B10110001,
+B10101001,
+B10111101,
+B10000011,
+B01111110};
+
 void setup() {
   lc.shutdown(0, false);
   lc.clearDisplay(0);
@@ -100,36 +109,47 @@ void loop() {
       lc.clearDisplay(0);
       first = false;
   }
-      
+    render(CENA);  
     tone(speakerpin, 294);
-    delay(500);
+    delay(170);
     tone(speakerpin, 330);
-    delay(500);
+    delay(150);
     tone(speakerpin, 262);
-    delay(1000);
+    delay(150);
     tone(speakerpin, 294);
+    delay(1000);
+    tone(speakerpin, 0);
+    delay(1250);
 
         tone(speakerpin, 349);
-    delay(500);
-    tone(speakerpin, 349);
-    delay(500);
+    delay(170);
+    tone(speakerpin, 330);
+    delay(150);
     tone(speakerpin, 262);
-    delay(1000);
+    delay(150);
     tone(speakerpin, 294);
-
+    delay(1000);
+    tone(speakerpin, 0);
+    delay(1250);
           tone(speakerpin, 294);
-    delay(500);
+    delay(170);
     tone(speakerpin, 330);
-    delay(500);
+    delay(150);
     tone(speakerpin, 262);
-    delay(1000);
+    delay(150);
     tone(speakerpin, 294);
+        delay(1000);
+    tone(speakerpin, 0);
+    delay(1250);
 
         tone(speakerpin, 349);
-    delay(500);
-    tone(speakerpin, 349);
-    delay(500);
+    delay(170);
+    tone(speakerpin, 330);
+    delay(150);
     tone(speakerpin, 262);
-    delay(1000);
+    delay(150);
     tone(speakerpin, 294);
+    delay(1000);
+    tone(speakerpin, 0);
+    delay(1250);
 }

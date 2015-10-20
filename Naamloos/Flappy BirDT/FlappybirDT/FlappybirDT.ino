@@ -5,7 +5,22 @@
  my code: 98%
  pixels code: 1%
  ijhack's code: 1% xD
- */
+
+  * How to use:
+  * 
+  * what you need:
+  * an ijduino!
+  * 
+  * optional:
+  * a speaker
+  * 
+  * if you want to play this, just put it on your ijduino.
+  * to use the speaker, plug it into digital pin 10 (behind your button)
+  * and plug the other side into a GROUND pin.
+  * 
+  * havr fun!
+
+*/
 
 #include "LedControl.h"
 LedControl lc = LedControl(20, 5, 21, 1);

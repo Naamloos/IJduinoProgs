@@ -24,9 +24,10 @@
 
 #include "LedControl.h"
 LedControl lc = LedControl(20, 5, 21, 1);
+bool deadtone = true;
 int wallx = 7;
 int speakerpin = 10;
-int ldfix;
+int ldfixy;
 bool boot = true;
 bool jumping;
 bool atwall = false;
@@ -86,6 +87,9 @@ void loop() {
     dead = isdead();
   }
   if (dead) {
+    if(!deadtone){
+    deadtones();
+    }
     cury = starty;
     wallx = 7;
     if (reader != buttonState) {
@@ -94,6 +98,7 @@ void loop() {
       spawn();
       dead = false;
       score = 0;
+      deadtone = false;
       return;
     }
   }
@@ -220,4 +225,10 @@ void difficulty(){
     diff = 20;
   }
 }
+
+int deadtones(){
+    tone(speakerpin, 100, 500);
+    deadtone = true;
+}
+
 

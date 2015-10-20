@@ -2,6 +2,7 @@
 // Little Potentiometer test
 // - Attatch the middle wire of the Potmeter to "analog input 0" / PC0. Or change the PotmeterPIN variable
 // - Other two wires are + and -
+// Any kind of button on "digital pin 9" / PB1 (the -) and on "digital pin 11" / PB3 (the +)
 
 #include "LedControl.h"
 //				LedControl(DATA_PIN, CLK_PIN, CS_PIN, DISPLAYS)

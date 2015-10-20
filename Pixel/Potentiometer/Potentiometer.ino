@@ -13,15 +13,15 @@ unsigned int oldY;
 unsigned int wait;
 
 void setup() {
-  lc.shutdown(0,false);
-  lc.clearDisplay(0);
-  lc.shutdown(1,false);
-  lc.clearDisplay(1);
-  pinMode(11, OUTPUT);
-  digitalWrite(11, LOW);
-  pinMode(9, INPUT_PULLUP);
-  
-  updateDisplays(height());
+	  lc.shutdown(0,false);
+	  lc.clearDisplay(0);
+	  lc.shutdown(1,false);
+	  lc.clearDisplay(1);
+	  pinMode(11, OUTPUT);
+	  digitalWrite(11, LOW);
+	  pinMode(9, INPUT_PULLUP);
+	  
+	  updateDisplays(height());
 }
 
 int buttonState = HIGH;

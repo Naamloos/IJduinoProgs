@@ -5,13 +5,13 @@
  my code: 98%
  pixels code: 1%
  ijhack's code: 1% xD
-
- So... sorry for putting this text here. just testing if git works..
  */
 
 #include "LedControl.h"
 LedControl lc = LedControl(20, 5, 21, 1);
 int wallx = 7;
+int speakerpin = 10;
+int ldfix;
 bool boot = true;
 bool jumping;
 bool atwall = false;
@@ -58,6 +58,10 @@ void loop() {
       buttonState = buttonState;
       jumping = jump();
     }
+    if (jumping){
+      tone(speakerpin, 300, 15);
+      tone(speakerpin, 800, 15);
+    }
     if (!jumping) {
       fall();
     }
@@ -80,15 +84,6 @@ void loop() {
   }
   difficulty();
 }
-
-/*
-int render(const byte* frame, long delaytime) {
-  lc.clearDisplay(0);
-  for (int r = 0; r < 8; r++) {
-    lc.setColumn(0, 7 - r, pgm_read_byte(&frame[r]));
-  }
-  delay(delaytime);
-}*/
 
 bool isdead() {
   if (wallx <= 1) {
@@ -183,31 +178,31 @@ int playery() {
 
 void difficulty(){
   if (score == 0) {
-    diff = 150;
-  }
-  if (score == 5) {
     diff = 100;
   }
-  if (score == 10) {
+  if (score == 5) {
     diff = 70;
   }
-  if (score == 15) {
+  if (score == 10) {
     diff = 50;
   }
-    if (score == 20) {
+  if (score == 15) {
     diff = 45;
   }
-      if (score == 25) {
+    if (score == 20) {
     diff = 40;
   }
-      if (score == 30) {
+      if (score == 25) {
     diff = 35;
   }
-      if (score == 35) {
+      if (score == 30) {
     diff = 30;
   }
-      if (score == 40) {
+      if (score == 35) {
     diff = 25;
+  }
+      if (score == 40) {
+    diff = 20;
   }
 }
 

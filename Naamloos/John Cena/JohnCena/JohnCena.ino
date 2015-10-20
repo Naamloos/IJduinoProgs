@@ -118,7 +118,7 @@ void loop() {
     delay(150);
     tone(speakerpin, 294);
     delay(1000);
-    tone(speakerpin, 0);
+    noTone(speakerpin);
     delay(1250);
 
         tone(speakerpin, 349);
@@ -129,7 +129,7 @@ void loop() {
     delay(150);
     tone(speakerpin, 294);
     delay(1000);
-    tone(speakerpin, 0);
+    noTone(speakerpin);
     delay(1250);
           tone(speakerpin, 294);
     delay(170);
@@ -139,7 +139,7 @@ void loop() {
     delay(150);
     tone(speakerpin, 294);
         delay(1000);
-    tone(speakerpin, 0);
+    noTone(speakerpin);
     delay(1250);
 
         tone(speakerpin, 349);
@@ -150,6 +150,6 @@ void loop() {
     delay(150);
     tone(speakerpin, 294);
     delay(1000);
-    tone(speakerpin, 0);
+    noTone(speakerpin);
     delay(1250);
 }

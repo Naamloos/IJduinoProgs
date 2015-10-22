@@ -1,6 +1,6 @@
 #include "LedControl.h"
 LedControl lc = LedControl(20, 5, 21, 1);
-int speakerpin = 10;
+int speakerpin = 8;
 bool first = true;
 
 byte J[8] = {B01111111,
